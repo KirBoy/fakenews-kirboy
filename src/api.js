@@ -61,7 +61,7 @@ export const postsAPI = {
     },
 
     editPost(title, text, photoUrl, description, id) {
-        return instance.patch(`posts/` + id, {title, text, photoUrl, description,}).then(response => response.data);
+        return instance.patch(`posts/` + id, {title, text, photoUrl, description}).then(response => response.data);
     },
 
     getMorePosts(page) {
