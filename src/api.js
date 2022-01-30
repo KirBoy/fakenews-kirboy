@@ -1,7 +1,7 @@
 import * as axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5656/',
+    baseURL: '/',
     headers: {"Authorization": localStorage.getItem('token')}
 })
 
