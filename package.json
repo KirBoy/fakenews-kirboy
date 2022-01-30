@@ -26,6 +26,7 @@
     "draft-js": "^0.11.7",
     "express": "^4.17.2",
     "express-fileupload": "^1.2.1",
+    "heroku": "^7.59.2",
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
     "materialize-css": "^1.0.0-rc.2",

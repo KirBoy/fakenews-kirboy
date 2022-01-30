@@ -56,7 +56,7 @@ module.exports.upload = async (req, res) => {
   }
 
   const { file } = req.files;
-  const uploadPath = [process.cwd(), '/public/uploads', file.md5 + '_' + file.name].join('/');
+  const uploadPath = [process.cwd(), '/build/uploads', file.md5 + '_' + file.name].join('/');
 
   file.mv(uploadPath, function (err) {
     if (err) {
