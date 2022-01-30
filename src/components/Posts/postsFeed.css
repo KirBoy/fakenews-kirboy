@@ -1,0 +1,38 @@
+
+.posts {
+  padding-top: 5px;
+}
+
+.post {
+  background-color: white;
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: border-color 0.2s linear;
+}
+
+.post:hover {
+  border-color: #2f49ff;
+}
+
+.post + .post {
+  margin-top: 20px;
+}
+
+.post_img {
+
+}
+
+.post_title {
+  margin: 8px 0;
+}
+
+.post_author {
+  margin-bottom: 5px;
+}
+
+.post_time {
+  display: inline-block;
+  margin-bottom: 5px;
+}
