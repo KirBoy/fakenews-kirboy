@@ -9,6 +9,7 @@ import style from './post.module.css'
 import ClearIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import Filters from "../Filters";
 
 function Post() {
     const params = useParams();
@@ -18,15 +19,15 @@ function Post() {
     const userData = useSelector(state => state.auth)
     const date = new Date(createdAt).toLocaleDateString()
     const handleText = text.split('\n')
-    console.log(handleText)
     React.useEffect(() => {
         dispatch(getPost(params.id))
     }, [])
 
     return (
-        <div>
+        <>
+            <Filters/>
             <div className={style.post}>
-                <img className='post_img' src={photoUrl} alt={title}/>
+                <img className='post_img' src={'/' + photoUrl} alt={title}/>
                 <div>
                     <h2 className='post_title'>{title}</h2>
                     <Link to={`/user/${user._id}`}>
@@ -51,7 +52,7 @@ function Post() {
                         <Message/>}
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
@@ -149,7 +150,7 @@ function AddComment({postId, text, setEditMode, commentId, userId, fullName}) {
 
 function Message() {
     return (
-        <div>have to login</div>
+        <p>Необходимо авторизоваться чтобы оставлять комментарии</p>
     )
 }
 

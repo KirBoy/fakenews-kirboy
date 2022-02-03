@@ -95,13 +95,8 @@ export const getUserProfile = (id) => async (dispatch) => {
     }
 }
 
-export const addNewPost = ({title, text, file, desc}) => async (dispatch) => {
-    const formData = new FormData()
-    formData.append('file', file)
-
-    const img = await postsAPI.addPostImg(formData)
-    console.log(img)
-    const response = await postsAPI.addPost(title, text, img.url, desc)
+export const addNewPost = ({title, text, photoUrl, desc}) => async (dispatch) => {
+    const response = await postsAPI.addPost(title, text, photoUrl, desc)
     dispatch(addPost(response))
 }
 
@@ -110,12 +105,9 @@ export const deleteUserPost = (id) => async (dispatch) => {
     dispatch(deletePost(id))
 }
 
-export const editPost = ({title, text, file, desc}, id) => async (dispatch) => {
-    const formData = new FormData()
-    formData.append('file', file)
-    console.log(title, text, file, desc)
-    const img = await postsAPI.addPostImg(formData)
-    await postsAPI.editPost(title, text, img.url, desc, id)
+export const editPost = ({title, text, photoUrl, desc}, id) => async (dispatch) => {
+
+    await postsAPI.editPost(title, text, photoUrl, desc, id)
     dispatch(patchPost(title, text, id))
 }
 

@@ -1,27 +1,31 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getPosts} from "../../redux/postsReducer";
 import './postsFeed.css'
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import Filters from "../Filters";
 
 function PostsFeed() {
-    const dispatch = useDispatch()
     const posts = useSelector(state => state.posts.posts)
     const query = useSelector(state => state.posts.query)
-    console.log(posts)
-    React.useEffect(() => {
-        dispatch(getPosts(query))
-    }, [query])
 
     if (posts.length === 0) {
-        return (<div>По запросу {query} ничего не найдено</div>)
+        return (<div>
+            <Filters/>
+            <p className='post__error'>По запросу {query} ничего не найдено</p>
+        </div>)
     }
 
     return (
-        <ul className='posts'>
-            {posts && posts.map(el => <PostMini key={el._id} title={el.title} user={el.user.fullName}
-                                                date={el.createdAt} id={el._id} views={el.views} img={el.photoUrl} description={el.description}/>)}
-        </ul>
+        <>
+            <Filters/>
+            <div className='posts__inner'>
+                <ul className='posts'>
+                    {posts.map(el => <PostMini key={el._id} title={el.title} user={el.user.fullName}
+                                               date={el.createdAt} id={el._id} views={el.views} img={el.photoUrl}
+                                               description={el.description}/>)}
+                </ul>
+            </div>
+        </>
     )
 }
 
@@ -33,7 +37,7 @@ function PostMini({title, user, date, id, description, img}) {
     return (
         <li className='post'>
             <Link to={`/posts/${id}`}>
-                <img className='post_img' src={img} alt={title}/>
+                <img className='post_img' src={'/' + img} alt={title}/>
                 <h2 className='post_title'>{title}</h2>
                 <h3 className='post_author'>Автор {user}</h3>
                 <time className='post_time'>{fixedDate}</time>
@@ -42,3 +46,20 @@ function PostMini({title, user, date, id, description, img}) {
         </li>
     )
 }
+
+// function PopularPosts({title, user, date, id, views, img}) {
+//     const fixedDate = new Date(date).toLocaleDateString()
+//     return (
+//         <li className='popular'>
+//             <Link className='popular__link' to={`/posts/${id}`}>
+//                 <img className='popular__img' src={'http://localhost:5656/' + img} alt={title}/>
+//                 <div>
+//                     <h3 className='popular__title'>{title}</h3>
+//                     <h3 className='post_author'>Автор {user}</h3>
+//                     <time className='post_time'>{fixedDate}</time>
+//                     <span>{views}</span>
+//                 </div>
+//             </Link>
+//         </li>
+//     )
+// }

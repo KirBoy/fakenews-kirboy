@@ -10,7 +10,6 @@ function WorkSpace() {
     const posts = useSelector(state => state.user.posts)
     const id = useSelector(state => state.auth.id)
     const dispatch = useDispatch()
-    console.log(id)
 
     React.useEffect(() => {
         dispatch(getUserProfile(id))
@@ -18,11 +17,11 @@ function WorkSpace() {
 
     return (
             <div className='workspace'>
-                {posts ? <ul className='workspace_list'>
+                {posts.length ? <ul className='workspace_list'>
                     {posts.map(el => <PreviewPost key={el._id} title={el.title} createdAt={el.createdAt}
                                                   views={el.views}
                                                   id={el._id}/>)}
-                </ul> : <div>У вас пока нету записей</div>}
+                </ul> : <p className='workspace__desc'>У вас пока нету записей для редактирования.</p>}
                 <Link to={`/workspace/create`}>
                     <button className='btn btn--big'>Создать новую запись</button>
                 </Link>

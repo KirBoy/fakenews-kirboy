@@ -12,10 +12,10 @@ function User() {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
     const date = new Date(user.createdAt).toLocaleDateString()
-    console.log(user.fullName)
+
     React.useEffect(() => {
         dispatch(getUserProfile(params.id))
-    }, [user.fullName])
+    }, [user.fullName,params.id])
 
     return (
         <div className='user'>
@@ -26,15 +26,11 @@ function User() {
             </div>
             <div className='user_right'>
                 <h2 className='user_subtitle'>Посты</h2>
-                <ul className='user_list'>
+                {user.posts.length?<ul className='user_list'>
                     {user.posts.map(el => <PreviewPost key={el._id} title={el.title} createdAt={el.createdAt}
                                                        views={el.views}
                                                        id={el._id}/>)}
-                </ul>
-                {/*<ul>*/}
-                {/*    {user.comments.map(el => <Comment key={el._id} text={el.text} createdAt={el.createdAt}*/}
-                {/*                                      post={el.post}/>)}*/}
-                {/*</ul>*/}
+                </ul>:<p className='user__desc'>Вы еще не создали ни одного поста.</p>}
             </div>
         </div>
     )

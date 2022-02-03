@@ -1,16 +1,24 @@
 import * as axios from "axios";
 
-const instance = axios.create({
+let instance = axios.create({
     baseURL: '/',
     headers: {"Authorization": localStorage.getItem('token')}
 })
 
+export function getCurrentAxiosInstance() {
+    instance = axios.create({
+        baseURL: '/',
+        headers: {"Authorization": localStorage.getItem('token')}
+    })
+}
+
 export const authAPI = {
-    register(fullName, email, password) {
+    register({fullName, email, password}) {
+
         return instance.post(`auth/register`, {fullName, email, password}).then(response => response.data);
     },
 
-    login(email, password) {
+    login({email, password}) {
         return instance.post(`auth/login`, {email, password}).then(response => response.data);
     },
 
@@ -19,6 +27,14 @@ export const authAPI = {
 export const postsAPI = {
     posts(query) {
         return instance.get(`posts?query=` + query).then(response => response.data);
+    },
+
+    com(total) {
+        return instance.get('/comments?&limit=' + total).then(response => response.data);
+    },
+
+    postsAll(total) {
+        return instance.get(`posts?&limit=` + total).then(response => response.data);
     },
 
     post(id) {

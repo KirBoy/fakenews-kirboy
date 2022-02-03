@@ -76,30 +76,29 @@ export const userLogOut = () => {
 }
 
 
-function setUserProfile(fullName, id) {
+export function setUserProfile(fullName, id) {
     return dispatch => {
         dispatch(setOpenModal())
         dispatch(setUser(fullName, id))
     }
 }
 
-export const getRegisterUser = ({fullName, email, password}) => async (dispatch) => {
-    try {
-        let response = await authAPI.register(fullName, email, password)
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('id', response._id);
-        dispatch(setUserProfile(fullName, response._id))
-    } catch (e) {
-
-    }
-}
+// export const getRegisterUser = ({fullName, email, password}) => async (dispatch) => {
+//     try {
+//         let response = await authAPI.register(fullName, email, password)
+//         localStorage.setItem('token', response.token);
+//         localStorage.setItem('id', response._id);
+//         dispatch(setUserProfile(fullName, response._id))
+//     } catch (e) {
+//
+//     }
+// }
 
 export const getAuthUser = ({email, password}) => async (dispatch) => {
     let response = await authAPI.login(email, password)
     localStorage.setItem('token', response.token);
     localStorage.setItem('id', response._id);
     dispatch(setUserProfile(response.fullName, response._id))
-
 }
 
 export const getUserAuthProfile = (id) => async (dispatch) => {
