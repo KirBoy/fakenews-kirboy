@@ -132,7 +132,7 @@ function CreateOrEditPost() {
                     </label>
                 </div>
                  <div className='workspace__files'>
-                     {values.photoUrl ? <img className='workspace__img' src={'/' + values.photoUrl}
+                     {values.photoUrl ? <img className='workspace__img' src={values.photoUrl}
                                              alt={values.title}/>: <div className='workspace__block'></div>}
                     <label>
                         <input className='workspace__file' type="file" onChange={onChange} name='file'/>

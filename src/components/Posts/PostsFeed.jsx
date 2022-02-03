@@ -37,7 +37,7 @@ function PostMini({title, user, date, id, description, img}) {
     return (
         <li className='post'>
             <Link to={`/posts/${id}`}>
-                <img className='post_img' src={'/' + img} alt={title}/>
+                <img className='post_img' src={img} alt={title}/>
                 <h2 className='post_title'>{title}</h2>
                 <h3 className='post_author'>Автор {user}</h3>
                 <time className='post_time'>{fixedDate}</time>

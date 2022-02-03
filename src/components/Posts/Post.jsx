@@ -27,7 +27,7 @@ function Post() {
         <>
             <Filters/>
             <div className={style.post}>
-                <img className='post_img' src={'/' + photoUrl} alt={title}/>
+                <img className='post_img' src={photoUrl} alt={title}/>
                 <div>
                     <h2 className='post_title'>{title}</h2>
                     <Link to={`/user/${user._id}`}>
