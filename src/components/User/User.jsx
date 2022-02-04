@@ -3,7 +3,6 @@ import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {getUserProfile} from "../../redux/userReducer";
 import {Link} from "react-router-dom";
-import {getDate} from "../../tools";
 import './user.css'
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
