@@ -12,6 +12,7 @@ export function getCurrentAxiosInstance() {
     })
 }
 
+
 export const authAPI = {
     register({fullName, email, password}) {
 
