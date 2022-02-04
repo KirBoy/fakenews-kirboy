@@ -1,13 +1,13 @@
 import * as axios from "axios";
 
 let instance = axios.create({
-    baseURL: '/',
+    baseURL: 'sds/',
     headers: {"Authorization": localStorage.getItem('token')}
 })
 
 export function getCurrentAxiosInstance() {
     instance = axios.create({
-        baseURL: '/',
+        baseURL: 'sdsd/',
         headers: {"Authorization": localStorage.getItem('token')}
     })
 }
