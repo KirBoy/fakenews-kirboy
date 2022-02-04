@@ -1,6 +1,5 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getDate} from "../../tools";
 import {Link} from "react-router-dom";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import {deleteUserPost, getUserProfile} from "../../redux/userReducer";

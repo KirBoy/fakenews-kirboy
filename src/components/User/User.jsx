@@ -3,6 +3,7 @@ import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {getUserProfile} from "../../redux/userReducer";
 import {Link} from "react-router-dom";
+
 import './user.css'
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
@@ -57,7 +58,7 @@ function PreviewPost({title, createdAt, views, id}) {
 }
 
 function Comment({text, createdAt, post}) {
-    const date = getDate(createdAt)
+    const date = new Date(createdAt).toLocaleDateString()
     return (
         <li>
             <Link to={`/posts/${post}`}>

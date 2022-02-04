@@ -3,7 +3,6 @@ import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {addComment, deleteUserComment, editUserComment, getPost} from "../../redux/postsReducer";
 import {Link} from "react-router-dom";
-import {getDate} from "../../tools";
 import Avatar from "@mui/material/Avatar";
 import style from './post.module.css'
 import ClearIcon from '@mui/icons-material/Clear';
