@@ -1,13 +1,13 @@
 import * as axios from "axios";
 
 let instance = axios.create({
-    baseURL: 'https://fakenews-kirboy.herokuapp.com',
+    baseURL: '/',
     headers: {"Authorization": localStorage.getItem('token')}
 })
 
 export function getCurrentAxiosInstance() {
     instance = axios.create({
-        baseURL: 'https://fakenews-kirboy.herokuapp.com',
+        baseURL: '/',
         headers: {"Authorization": localStorage.getItem('token')}
     })
 }
