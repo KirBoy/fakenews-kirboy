@@ -4,7 +4,7 @@ const { Comment } = require('../models/Comment');
 const { entityPaginate } = require('../utils/entityPaginate');
 
 const checkCommentBody = Joi.object({
-  text: Joi.string().required().min(3).max(65536),
+  text: Joi.string().required().max(65536),
   user: Joi.string().required().length(24),
   post: Joi.string().required().length(24),
 });
