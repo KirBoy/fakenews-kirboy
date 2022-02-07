@@ -63,7 +63,7 @@ module.exports.upload = async (req, res) => {
       return res.status(500).send(err);
     }
 
-    res.json({ url: uploadPath.split('/public')[1] });
+    res.json({ url: uploadPath.split('/build')[1] });
   });
 };
 
